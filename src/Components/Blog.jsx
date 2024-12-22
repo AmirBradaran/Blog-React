@@ -1,27 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
- 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog with Sidebar</title>
+import React from 'react'
 
-  </head>
-  <body>
-    <!-- Sidebar -->
-    <div class="sidebar">
+export default function Blog() {
+  return (
+    <>
+     <div class="sidebar">
       <h2>Blog Posts</h2>
       <ul>
         <li><a href="#">Post 1</a></li>
         <li><a href="#">Post 2</a></li>
         <li><a href="#">Post 3</a></li>
       </ul>
-    </div>
-
-    <!-- Main Content Area -->
+    </div> 
     <div class="content">
       <h1>Blog Title</h1>
-      <img src="https://via.placeholder.com/800x400" alt="Blog Image">
+      <img src={"https://via.placeholder.com/800x400"} alt="Blog Image"/>
       <p>
         This is the body of the blog post. Lorem ipsum dolor sit amet,
         consectetur adipiscing elit. Integer posuere erat a ante.
@@ -29,7 +21,7 @@
         erat a ante.
       </p>
 
-      <!-- Comments Section -->
+
       <div class="comments">
         <h3>Comments</h3>
 
@@ -46,5 +38,6 @@
         </div>
       </div>
     </div>
-  </body>
-</html>
+    </>
+  )
+}
