@@ -1,33 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 
-export default function Body({post}) {
+export default function Body({ post }) {
+  const [comments, setComments] = useState();
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await fetch(
+          `http://localhost:3000/comments?post-id=${post.id}`
+        );
+        const data = await res.json();
+        setComments(data);
+      } catch (error) {
+        console.log(Error - Fetch);
+      }
+    })();
+  }, [post]);
+  const commennts = comments?.map((e, index) => {
+    <Comment key={index} author={e.author} body={e.body} />;
+  });
   return (
     <div class="content">
-        <h1>{post.title}</h1>
-        <img src={`assets/${post.image}`} alt="Blog Image" />
-        <p>
-            {post.body}
-        </p>
+      <h1>{post.title}</h1>
+      <img src={`assets/${post.image}`} alt="Blog Image" />
+      <p>{post.body}</p>
 
-        <div class="comments">
-          <h3>Comments</h3>
-
-          <div class="comment">
-            <p>
-              <strong>John Doe:</strong> Great blog post! Learned a lot from
-              this.
-            </p>
-            <small>Posted on: October 3, 2024</small>
-          </div>
-
-          <div class="comment">
-            <p>
-              <strong>Jane Smith:</strong> Very informative, thank you for
-              sharing!
-            </p>
-            <small>Posted on: October 4, 2024</small>
-          </div>
-        </div>
+      <div class="comments">
+        <h3>Comments</h3>
+        {commennts}
       </div>
-  )
+    </div>
+  );
 }
